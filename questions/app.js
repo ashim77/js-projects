@@ -12,11 +12,11 @@
 //   });
 // });
 
-const questions = document.querySelectorAll(".question");
+// const questions = document.querySelectorAll(".question");
 
-questions.forEach(function (question) {
-  console.log(question);
-});
+// questions.forEach(function (question) {
+//   console.log(question);
+// });
 
 // const btns = document.querySelectorAll(".question-btn");
 
@@ -27,22 +27,19 @@ questions.forEach(function (question) {
 //   });
 // });
 
-// const questions = document.querySelectorAll(".question");
+const questions = document.querySelectorAll(".question");
 
-// questions.forEach(function (queston) {
-//   const btn = queston.querySelector(".question-btn");
-//   // console.log(btn);
-//   btn.addEventListener("click", function () {
-//     //remove class
-//     questions.forEach(function (item) {
-//       // console.log(queston);
-//       // console.log(item);
-//       if (item !== queston) {
-//         item.classList.remove("show-text");
-//         // console.log("ashim");
-//       }
-//     });
+questions.forEach(function (queston) {
+  const btn = queston.querySelector(".question-btn");
+  // console.log(btn);
+  btn.addEventListener("click", function () {
+    //remove class
+    questions.forEach(function (item) {
+      if (item !== queston) {
+        item.classList.remove("show-text");
+      }
+    });
 
-//     queston.classList.toggle("show-text");
-//   });
-// });
+    queston.classList.toggle("show-text");
+  });
+});
