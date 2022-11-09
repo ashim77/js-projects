@@ -25,12 +25,57 @@ navToggle.addEventListener("click", function () {
 
 // ********** fixed navbar ************
 const navBar = document.getElementById("nav");
-const topLink = document.querySelector("top-link");
+const topLink = document.querySelector(".top-link");
 window.addEventListener("scroll", function () {
   const scrollHeight = window.scrollY;
   const navHeight = navBar.getBoundingClientRect().height;
-  console.log(scrollHeight);
+  if (scrollHeight > navHeight) {
+    navBar.classList.add("fixed-nav");
+  } else {
+    navBar.classList.remove("fixed-nav");
+  }
+
+  // scroll to top
+  if (scrollHeight > 500) {
+    topLink.classList.add("show-link");
+  } else {
+    topLink.classList.remove("show-link");
+  }
 });
 
 // ********** smooth scroll ************
 // select links
+const scrollLinks = document.querySelectorAll(".scroll-link");
+
+scrollLinks.forEach(function (link) {
+  link.addEventListener("click", function (e) {
+    // Prevent Default
+    e.preventDefault();
+
+    // Navigate to specific spot
+    const id = e.currentTarget.getAttribute("href").slice(1);
+    const element = document.getElementById(id);
+    // Calculate the heights
+    const navHeight = navBar.getBoundingClientRect().height;
+    const containerHeight = linksContainer.getBoundingClientRect().height;
+    const fixedNav = navBar.classList.contains("fixed-nav");
+    let position = element.offsetTop - navHeight;
+
+    // check fixed nav
+    if (!fixedNav) {
+      position -= navHeight;
+    }
+
+    // calculate for mobile nav
+    if (navHeight > 82) {
+      position += containerHeight;
+    }
+
+    //final output
+    window.scrollTo({
+      left: 0,
+      top: position,
+    });
+    linksContainer.style.height = 0;
+  });
+});
