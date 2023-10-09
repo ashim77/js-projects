@@ -1,17 +1,11 @@
 let shop = document.getElementById('shop');
 
-const shopItemsData = [
-    {id: 1, name:"Casual Shirt", price: 45, desc: "Lorem ipsum dolor sit amet consectetur adipisicing.", img: "images/img-1.jpg"},
-    {id: 2, name:"Office Shirt", price: 100, desc: "Lorem ipsum dolor sit amet consectetur adipisicing.", img: "images/img-2.jpg"},
-    {id: 3, name:"T-Shirt", price: 25, desc: "Lorem ipsum dolor sit amet consectetur adipisicing.", img: "images/img-3.jpg"},
-    {id: 4, name:"Man's Shoot", price: 300, desc: "Lorem ipsum dolor sit amet consectetur adipisicing.", img: "images/img-4.jpg"},
-];
-
-let basket = [];
+let basket = JSON.parse(localStorage.getItem("data")) || [];
 
 let generateShop = () => {
     return (shop.innerHTML = shopItemsData.map((value)=>{
         let {id,name,price,desc,img} = value;
+        let search = basket.find((value)=> value.id === id) || [];
         return `<div id="product-id-${id}" class="item">
         <img width="220" src="${img}" alt="" />
         <div class="details">
@@ -21,7 +15,7 @@ let generateShop = () => {
             <h2>$${price}</h2>
             <div class="buttons">
               <i onclick="decrement(${id})" class="bi bi-dash-lg"></i>
-              <div id="${id}" class="quantity">0</div>
+              <div id="${id}" class="quantity">${search.item === undefined ? 0 : search.item}</div>
               <i onclick="increment(${id})" class="bi bi-plus-lg"></i>
             </div>
           </div>
@@ -40,21 +34,35 @@ let increment = (id) => {
     }else{
         search.item += 1;
     }
-    console.log(basket);
-    update();
+    update(id);
+    localStorage.setItem("data", JSON.stringify(basket));
 }
 
 let decrement = (id) => {
     let search = basket.find((value) => value.id === id);
+    if(search === undefined){
+        return;
+    }
     if(search.item === 0){
         return;
     } else{
         search.item -= 1;
     }
-    console.log(basket);
-    update();
+    update(id);
+    basket = basket.filter((value)=> value.item !== 0);
+    localStorage.setItem("data", JSON.stringify(basket));
 }
 
-let update = () => {
-    console.log("The update function is running");
+let update = (id) => {
+    let search = basket.find((value)=> value.id === id);
+    document.getElementById(id).innerHTML = search.item;
+    calculation()
 }
+
+
+let calculation = () => {
+    let cartIcon = document.getElementById('cartAmount');
+    cartIcon.innerHTML = basket.map((value)=>value.item).reduce((total,value)=>total+value,0);
+}
+
+calculation();
