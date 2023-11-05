@@ -1,0 +1,39 @@
+{
+  "jobs": [
+    {
+      "title": "Software Engineer",
+      "type": "Full Time",
+      "salary": "150000",
+      "deadline": "2023-12-31",
+      "id": 3
+    },
+    {
+      "title": "Product Manager",
+      "type": "Remote",
+      "salary": "18000",
+      "deadline": "2023-12-31",
+      "id": 4
+    },
+    {
+      "title": "MERN Stack Developer",
+      "type": "Internship",
+      "salary": "40300",
+      "deadline": "2023-11-17",
+      "id": 5
+    },
+    {
+      "title": "MERN Stack Developer",
+      "type": "Full Time",
+      "salary": "2323233",
+      "deadline": "2023-11-09",
+      "id": 6
+    },
+    {
+      "title": "QA Engineer",
+      "type": "Full Time",
+      "salary": "15000",
+      "deadline": "2023-12-31",
+      "id": 7
+    }
+  ]
+}
