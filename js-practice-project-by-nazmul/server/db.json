@@ -34,6 +34,13 @@
       "salary": "15000",
       "deadline": "2023-12-31",
       "id": 7
+    },
+    {
+      "title": "Full Stack Developer",
+      "type": "Remote",
+      "salary": "340",
+      "deadline": "2023-11-16",
+      "id": 8
     }
   ]
 }

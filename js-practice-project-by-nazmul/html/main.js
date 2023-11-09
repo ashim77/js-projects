@@ -19,7 +19,6 @@ const jobDeadline = document.getElementById('lws-JobDeadline');
 const editID = document.querySelector('.lws-edit');
 const jobDelete = document.querySelector('.lws-delete');
 
-let output = '';
 const url = ' http://localhost:9000/jobs';
 
 // Add New Job click events
@@ -44,7 +43,7 @@ backToJobList.addEventListener('click', function(e){
 
 // Rendar Job function
 function renderJobs(jobs){
-    // console.log(jobs[0].id);
+   let output = '';  
     jobs.forEach(post => {
         output += `<div class="lws-single-job" data-id="${post.id}">
         <div class="flex-1 min-w-0">
@@ -177,12 +176,91 @@ addPostForm.addEventListener('submit',function(e){
 
 
 // Job filter by job type
+const allAvailableJobs = document.getElementById('lws-alljobs-menu');
+const internshipMenu = document.getElementById('lws-internship-menu');
+const fulltimeMenu = document.getElementById('lws-fulltime-menu');
+const remoteMenu = document.getElementById('lws-remote-menu');
 
-// Add event listeners to job type links
-document.querySelectorAll('.sub-menu').forEach((link) => {
-    link.addEventListener('click', function (e) {
-        e.preventDefault();
-        const selectedJobType = link.getAttribute('href').replace('/jobs/', ''); // Extract job type from href
-        filterJobList(selectedJobType);
+allAvailableJobs.addEventListener('click', function(e){
+    e.preventDefault();
+    fetch(url)
+    .then((res)=> res.json())
+    .then((data)=> renderJobs(data));
+});
+// Filter by Internshop Job
+internshipMenu.addEventListener('click', function(e){
+    e.preventDefault();
+    fetch(url)
+    .then((res)=> res.json())
+    .then((data)=> {
+        const intershipItems = data.filter(item => item.type === 'Internship');
+        renderJobs(intershipItems);
     });
+});
+// Fiter by Full Time Job
+fulltimeMenu.addEventListener('click', function(e){
+    e.preventDefault();
+    fetch(url)
+    .then((res)=> res.json())
+    .then((data)=> {
+        const fullTimeItems = data.filter(item => item.type === 'Full Time');
+        renderJobs(fullTimeItems);
+    });
+});
+// Fiter by Remote Job
+remoteMenu.addEventListener('click', function(e){
+    e.preventDefault();
+    fetch(url)
+    .then((res)=> res.json())
+    .then((data)=> {
+        const remoteItems = data.filter(item => item.type === 'Remote');
+        renderJobs(remoteItems);
+    });
+});
+
+// Search the jobs by job title
+const searchValue = document.getElementById('lws-searchJob');
+console.log(searchValue);
+
+searchValue.addEventListener('input', function() {
+    const inputValue = searchValue.value.toLowerCase();
+    console.log('Input value:', inputValue);
+
+    fetch(url)
+    .then((res)=> res.json())
+    .then((data) => {
+        const searchedJobs = data.filter(item => item.title.toLowerCase().includes(inputValue));
+        renderJobs(searchedJobs);
+    })
+});
+
+
+// sort the low to high
+const sortMethod = document.getElementById('lws-sort');
+sortMethod.addEventListener('change', function(){
+    const selectedOption = sortMethod.value;
+    console.log(selectedOption);
+    if (selectedOption === 'Salary (Low to High)') {
+        fetch(url)
+            .then((res)=> res.json())
+            .then((data) => {
+                const jobsLowToHigh = data.slice().sort((a,b) => {
+                    const salaryA = parseInt(a.salary);
+                    const salaryB = parseInt(b.salary);
+                    return salaryA - salaryB;
+                });
+                renderJobs(jobsLowToHigh);
+            });
+    } else if(selectedOption === 'Salary (High to Low)'){
+        fetch(url)
+            .then((res)=> res.json())
+            .then((data) => {
+                const jobsHighToLow = data.slice().sort((a,b) => {
+                    const salaryA = parseInt(a.salary);
+                    const salaryB = parseInt(b.salary);
+                    return salaryB - salaryA;
+                });
+                renderJobs(jobsHighToLow);
+            });
+    }
 });
