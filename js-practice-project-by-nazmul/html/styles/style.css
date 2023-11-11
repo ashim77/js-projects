@@ -1184,3 +1184,32 @@ form .fieldContainer {
     max-width: none;
   }
 }
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 20px;
+}
+
+.job-list {
+  /* Style your job list container as needed */
+}
+
+.pagination-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  padding: 8px 12px;
+  margin: 0 5px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #e0e0e0;
+}

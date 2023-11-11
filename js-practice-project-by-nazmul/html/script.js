@@ -19,12 +19,12 @@ const jobDeadline = document.getElementById('lws-JobDeadline');
 const editID = document.querySelector('.lws-edit');
 const jobDelete = document.querySelector('.lws-delete');
 
-const url = ' http://localhost:9000/jobs';
+const url = 'http://localhost:9000/jobs';
 
 // Add New Job click events
 const addButton = document.getElementById('lws-addJob-menu');
 
-addButton.addEventListener('click', function(e){
+addButton.addEventListener('click', function (e) {
     e.preventDefault();
 
     newJobBody.classList.remove("hidden");
@@ -34,7 +34,7 @@ addButton.addEventListener('click', function(e){
 // Back to job list
 const backToJobList = document.getElementById('backToJobList');
 
-backToJobList.addEventListener('click', function(e){
+backToJobList.addEventListener('click', function (e) {
     e.preventDefault();
 
     newJobBody.classList.add("hidden");
@@ -42,9 +42,14 @@ backToJobList.addEventListener('click', function(e){
 });
 
 // Rendar Job function
-function renderJobs(jobs){
-   let output = '';  
-    jobs.forEach(post => {
+function renderJobs(jobs, page) {
+    let output = '';
+    const startIdx = (page - 1) * jobsPerPage;
+    const endIdx = startIdx + jobsPerPage;
+
+    const currentJobs = jobs.slice(startIdx, endIdx);
+
+    currentJobs.forEach(post => {
         output += `<div class="lws-single-job" data-id="${post.id}">
         <div class="flex-1 min-w-0">
             <h2 class="lws-title">${post.title}</h2>
@@ -79,21 +84,23 @@ function renderJobs(jobs){
                 </button>
             </span>
         </div>
-    </div>`
+    </div>`;
     });
 
-    jobList.innerHTML = output;    
+    jobList.innerHTML = output;
 }
 
 // Get - Read the posts
 // Method: GET
 fetch(url)
-    .then((res)=> res.json())
-    .then((data)=> renderJobs(data));
+    .then((res) => res.json())
+    .then((data) => {
+        renderJobs(data, currentPage);
+        renderPaginationButtons(data.length);
+    });
 
-// Job actions behaviour controller
-jobList.addEventListener('click',function(e){
-    // console.dir(e.target.id);
+// Job actions behavior controller
+jobList.addEventListener('click', function (e) {
     e.preventDefault();
     let deleteButtonIsPressed = e.target.id == 'delete-post';
     let editButtonIsPressed = e.target.id == 'edit-post';
@@ -102,12 +109,12 @@ jobList.addEventListener('click',function(e){
 
     // Delete - Remove the existing post
     // Method: DELETE
-    if(deleteButtonIsPressed){
-        fetch(`${url}/${id}`,{
+    if (deleteButtonIsPressed) {
+        fetch(`${url}/${id}`, {
             method: 'DELETE',
         })
             .then((res) => res.json())
-            .then(()=> location.reload())
+            .then(() => location.reload())
     }
 
     // Edit the existing post
@@ -115,7 +122,7 @@ jobList.addEventListener('click',function(e){
         formHeading.innerText = 'Edit Job Post';
         submitButton.innerText = 'Update';
         newJobBody.classList.remove('hidden');
-    
+
         fetch(`${url}/${id}`)
             .then((res) => res.json())
             .then((data) => {
@@ -128,7 +135,7 @@ jobList.addEventListener('click',function(e){
 
     // Update - update the existing post
     // Method: PATCH
-    submitButton.addEventListener('click', function(e){
+    submitButton.addEventListener('click', function (e) {
         e.preventDefault();
         fetch(`${url}/${id}`, {
             method: 'PATCH',
@@ -145,13 +152,11 @@ jobList.addEventListener('click',function(e){
             .then((res) => res.json())
             .then(() => location.reload())
     })
-    
-
 });
 
 // Create - Insert new Job Post
 // Method: POST
-addPostForm.addEventListener('submit',function(e){
+addPostForm.addEventListener('submit', function (e) {
     e.preventDefault();
     // console.log();
     fetch(url, {
@@ -166,14 +171,13 @@ addPostForm.addEventListener('submit',function(e){
             deadline: jobDeadline.value
         })
     })
-    .then((res) => res.json())
-    .then((data)=> {
-        const dataArray = [];
-        dataArray.push(data);
-        renderJobs(dataArray);
-    });
+        .then((res) => res.json())
+        .then((data) => {
+            const dataArray = [];
+            dataArray.push(data);
+            renderJobs(dataArray, currentPage);
+        });
 });
-
 
 // Job filter by job type
 const allAvailableJobs = document.getElementById('lws-alljobs-menu');
@@ -181,91 +185,128 @@ const internshipMenu = document.getElementById('lws-internship-menu');
 const fulltimeMenu = document.getElementById('lws-fulltime-menu');
 const remoteMenu = document.getElementById('lws-remote-menu');
 
-allAvailableJobs.addEventListener('click', function(e){
+allAvailableJobs.addEventListener('click', function (e) {
     e.preventDefault();
     newJobBody.classList.add("hidden");
-    jobListBody.classList.remove("hidden");    
+    jobListBody.classList.remove("hidden");
     fetch(url)
-    .then((res)=> res.json())
-    .then((data)=> renderJobs(data));
+        .then((res) => res.json())
+        .then((data) => {
+            renderJobs(data, currentPage);
+            renderPaginationButtons(data.length);
+        });
 });
 // Filter by Internshop Job
-internshipMenu.addEventListener('click', function(e){
+internshipMenu.addEventListener('click', function (e) {
     e.preventDefault();
     newJobBody.classList.add("hidden");
-    jobListBody.classList.remove("hidden");    
+    jobListBody.classList.remove("hidden");
     fetch(url)
-    .then((res)=> res.json())
-    .then((data)=> {
-        const intershipItems = data.filter(item => item.type === 'Internship');
-        renderJobs(intershipItems);
-    });
+        .then((res) => res.json())
+        .then((data) => {
+            const internshipItems = data.filter(item => item.type === 'Internship');
+            renderJobs(internshipItems, currentPage);
+            renderPaginationButtons(internshipItems.length);
+        });
 });
-// Fiter by Full Time Job
-fulltimeMenu.addEventListener('click', function(e){
+// Filter by Full Time Job
+fulltimeMenu.addEventListener('click', function (e) {
     e.preventDefault();
     newJobBody.classList.add("hidden");
-    jobListBody.classList.remove("hidden");    
+    jobListBody.classList.remove("hidden");
     fetch(url)
-    .then((res)=> res.json())
-    .then((data)=> {
-        const fullTimeItems = data.filter(item => item.type === 'Full Time');
-        renderJobs(fullTimeItems);
-    });
+        .then((res) => res.json())
+        .then((data) => {
+            const fullTimeItems = data.filter(item => item.type === 'Full Time');
+            renderJobs(fullTimeItems, currentPage);
+            renderPaginationButtons(fullTimeItems.length);
+        });
 });
-// Fiter by Remote Job
-remoteMenu.addEventListener('click', function(e){
+// Filter by Remote Job
+remoteMenu.addEventListener('click', function (e) {
     e.preventDefault();
     newJobBody.classList.add("hidden");
-    jobListBody.classList.remove("hidden");    
+    jobListBody.classList.remove("hidden");
     fetch(url)
-    .then((res)=> res.json())
-    .then((data)=> {
-        const remoteItems = data.filter(item => item.type === 'Remote');
-        renderJobs(remoteItems);
-    });
+        .then((res) => res.json())
+        .then((data) => {
+            const remoteItems = data.filter(item => item.type === 'Remote');
+            renderJobs(remoteItems, currentPage);
+            renderPaginationButtons(remoteItems.length);
+        });
 });
 
 // Search the jobs by job title
 const searchValue = document.getElementById('lws-searchJob');
 
-searchValue.addEventListener('input', function() {
+searchValue.addEventListener('input', function () {
     const inputValue = searchValue.value.toLowerCase();
 
     fetch(url)
-    .then((res)=> res.json())
-    .then((data) => {
-        const searchedJobs = data.filter(item => item.title.toLowerCase().includes(inputValue));
-        renderJobs(searchedJobs);
-    })
+        .then((res) => res.json())
+        .then((data) => {
+            const searchedJobs = data.filter(item => item.title.toLowerCase().includes(inputValue));
+            renderJobs(searchedJobs, currentPage);
+            renderPaginationButtons(searchedJobs.length);
+        })
 });
 
-
-// sort the low to high
+// Sort the low to high
 const sortMethod = document.getElementById('lws-sort');
-sortMethod.addEventListener('change', function(){
+sortMethod.addEventListener('change', function () {
     const selectedOption = sortMethod.value;
     if (selectedOption === 'Salary (Low to High)') {
         fetch(url)
-            .then((res)=> res.json())
+            .then((res) => res.json())
             .then((data) => {
-                const jobsLowToHigh = data.slice().sort((a,b) => {
+                const jobsLowToHigh = data.slice().sort((a, b) => {
                     const salaryA = parseInt(a.salary);
                     const salaryB = parseInt(b.salary);
                     return salaryA - salaryB;
                 });
-                renderJobs(jobsLowToHigh);
+                renderJobs(jobsLowToHigh, currentPage);
+                renderPaginationButtons(jobsLowToHigh.length);
             });
-    } else if(selectedOption === 'Salary (High to Low)'){
+    } else if (selectedOption === 'Salary (High to Low)') {
         fetch(url)
-            .then((res)=> res.json())
+            .then((res) => res.json())
             .then((data) => {
-                const jobsHighToLow = data.slice().sort((a,b) => {
+                const jobsHighToLow = data.slice().sort((a, b) => {
                     const salaryA = parseInt(a.salary);
                     const salaryB = parseInt(b.salary);
                     return salaryB - salaryA;
                 });
-                renderJobs(jobsHighToLow);
+                renderJobs(jobsHighToLow, currentPage);
+                renderPaginationButtons(jobsHighToLow.length);
             });
     }
 });
+
+// Add a variable to store the current page
+let currentPage = 1;
+const jobsPerPage = 5; // Number of jobs to display per page
+
+// Function to render pagination buttons
+function renderPaginationButtons(totalJobs) {
+    const totalPages = Math.ceil(totalJobs / jobsPerPage);
+    const paginationContainer = document.querySelector('.pagination-container');
+
+    let buttonsHtml = '';
+
+    for (let i = 1; i <= totalPages; i++) {
+        buttonsHtml += `<button class="pagination-button" data-page="${i}">${i}</button>`;
+    }
+
+    paginationContainer.innerHTML = buttonsHtml;
+
+    // Add event listener to each pagination button
+    const paginationButtons = document.querySelectorAll('.pagination-button');
+    paginationButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            currentPage = parseInt(this.dataset.page);
+            fetch(url)
+                .then((res) => res.json())
+                .then((data) => renderJobs(data, currentPage));
+        });
+    });
+}
