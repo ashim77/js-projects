@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Job</title>
+</head>
+<body>
+
+  <div class="single-job-details">
+      <!-- Single job details will be rendered here -->
+  </div>
+
+  <!-- Add your scripts at the end of the body to ensure DOM is loaded -->
+  <script>
+    // Your script for fetching and rendering single job details goes here
+
+    // Example code for extracting jobId from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const jobId = urlParams.get('jobId');
+
+    // Fetch and render single job details
+    if (jobId) {
+        fetchAndRenderSingleJob(jobId);
+    }
+  </script>
+</body>
+</html>
