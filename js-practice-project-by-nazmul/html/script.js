@@ -310,3 +310,63 @@ function renderPaginationButtons(totalJobs) {
         });
     });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  // ... (existing code)
+
+// Function to navigate to the single job page
+function goToSingleJobPage(jobId) {
+    window.location.href = `single-job.html?id=${jobId}`;
+  }
+  
+  // Function to render related jobs on the single job page
+  function renderRelatedJobs(relatedJobs) {
+    const relatedJobsContainer = document.getElementById('relatedJobsContainer');
+    relatedJobsContainer.innerHTML = ''; // Clear previous content
+  
+    relatedJobs.forEach((jobId) => {
+      // Fetch details for each related job and create HTML elements
+      fetch(`${url}/${jobId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          const relatedJobElement = document.createElement('div');
+          relatedJobElement.innerHTML = `
+            <h3>${data.title}</h3>
+            <p>Type: ${data.type}</p>
+            <p>Salary: ${data.salary}</p>
+            <p>Deadline: ${data.deadline}</p>
+            <!-- Add more details as needed -->
+          `;
+          relatedJobsContainer.appendChild(relatedJobElement);
+        });
+    });
+  }
+  
+  // Event listener for job titles
+  jobList.addEventListener('click', function (e) {
+    e.preventDefault();
+    const jobTitleElement = e.target.closest('.lws-single-job');
+    if (jobTitleElement) {
+      const jobId = jobTitleElement.dataset.id;
+      goToSingleJobPage(jobId);
+    }
+  });
+  
+  // ... (existing code)
+  
