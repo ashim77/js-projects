@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Delayed Loop</title>
+</head>
+<body>
+  <script>
+    function delayedLoop(count) {
+      setTimeout(function() {
+        console.log(count);
+        if (count < 3) {
+          delayedLoop(count + 1);
+        } else {
+          console.log("Loop End");
+        }
+      }, count * 1000); // Delay in milliseconds (1 second = 1000 milliseconds)
+    }
+
+    console.log("Loop Start");
+    delayedLoop(0);
+  </script>
+
+
+
+<button onclick="startLoop()">Start Loop</button>
+<div id="output"></div>
+
+<script>
+    function delayLoop(i) {
+        setTimeout(function () {
+            if (i === 0) {
+                document.getElementById("output").innerHTML += "Loop Start<br>";
+            } else if (i === 10) {
+                document.getElementById("output").innerHTML += "Loop End<br>";
+                return;
+            } else {
+                document.getElementById("output").innerHTML += i + ' (second delay)<br>';
+            }
+            delayLoop(i + 1);
+        }, i * 1000); // i * 1000 milliseconds = i seconds
+    }
+
+    function startLoop() {
+        document.getElementById("output").innerHTML = "";
+        delayLoop(0);
+    }
+</script>
+</body>
+</html>

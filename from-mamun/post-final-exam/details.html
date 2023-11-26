@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HasTech || Exam HTML Tempate</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="./assets/js/jquery.slim.min.js"></script>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <!-- navigation -->
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">HasTech</a>
+      <form class="form-inline">
+        <input
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Search"
+        />
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          Search
+        </button>
+      </form>
+    </nav>
+
+    <!-- Modal -->
+    <div class="modal fade" id="postEditModal" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Update post</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="post-title" class="col-form-label">Title:</label>
+                <input type="text" class="form-control" id="post-title" />
+              </div>
+              <div class="form-group">
+                <label for="description-text" class="col-form-label"
+                  >Description:</label
+                >
+                <textarea class="form-control" id="description-text"></textarea>
+              </div>
+              <div class="form-group mb-3">
+                <div class="tag-selector">
+                  <input type="checkbox" name="tags[]" id="news" value="news" />
+                  <label for="news"> News</label><br />
+                  <input type="checkbox" id="post" name="tags[]" value="post" />
+                  <label for="post"> post</label><br />
+                  <input
+                    type="checkbox"
+                    id="fashion"
+                    name="tags[]"
+                    value="fashion"
+                  />
+                  <label for="fashion"> fashion</label><br /><br />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Update Post</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-details-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="blog-detail-area">
+              <div class="blog-item-image">
+                <img src="./assets/images/image_1.jpg" alt="Sample Title" />
+              </div>
+              <div class="blog-description">
+                <h2>
+                  Sample title
+                  <span
+                    class="edit-post"
+                    data-toggle="modal"
+                    data-target="#postEditModal"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-pencil-square"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+                      />
+                    </svg>
+                  </span>
+                </h2>
+                <div class="description">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi
+                </div>
+              </div>
+
+              <div class="blog-comment-area">
+                <h2>0 COMMENTS</h2>
+                <ul class="comment-list">
+                  <li>
+                    <div class="author-image">
+                      <img src="./assets/user-avater.avif" alt="Comment user" />
+                    </div>
+                    <div class="comment-area">
+                      <h4>HasTech</h4>
+                      <p>
+                        ut labore et dolore magna aliqua. Ut enim ad minim
+                        veniam, quis nostrud exercitation ullamco laboris nisi
+                      </p>
+                    </div>
+                    <div class="delete-comment">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-trash3"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"
+                        />
+                      </svg>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="author-image">
+                      <img src="./assets/user-avater.avif" alt="Comment user" />
+                    </div>
+                    <div class="comment-area">
+                      <h4>HasTech</h4>
+                      <p>
+                        ut labore et dolore magna aliqua. Ut enim ad minim
+                        veniam, quis nostrud exercitation ullamco laboris nisi
+                      </p>
+                    </div>
+                    <div class="delete-comment">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-trash3"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"
+                        />
+                      </svg>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="blog-comment-form">
+                <h2>TYPE YOUR COMMENT</h2>
+                <form>
+                  <div class="form-group">
+                    <label for="comment-text" class="col-form-label"
+                      >Comment:</label
+                    >
+                    <textarea class="form-control" id="comment-text"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="comment-author" class="col-form-label"
+                      >Name:</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="comment-author"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary">Comment</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="related-blog-area">
+              <div class="single-related-blog">
+                <div class="related-item-image">
+                  <a href="details.html?id=1"
+                    ><img
+                      src="./assets/images/image_2.jpeg"
+                      alt="Sample Title"
+                    />
+                  </a>
+                </div>
+                <div class="related-item-info">
+                  <h3><a href="details.html?id=1">Sample Blog title</a></h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur ...</p>
+                </div>
+              </div>
+              <div class="single-related-blog">
+                <div class="related-item-image">
+                  <a href="details.html?id=2"
+                    ><img
+                      src="./assets/images/image_2.jpeg"
+                      alt="Sample Title"
+                    />
+                  </a>
+                </div>
+                <div class="related-item-info">
+                  <h3><a href="details.html?id=2">Sample Blog title</a></h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur ...</p>
+                </div>
+              </div>
+              <div class="single-related-blog">
+                <div class="related-item-image">
+                  <a href="details.html?id=3"
+                    ><img
+                      src="./assets/images/image_2.jpeg"
+                      alt="Sample Title"
+                    />
+                  </a>
+                </div>
+                <div class="related-item-info">
+                  <h3><a href="details.html?id=3">Sample Blog title</a></h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur ...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>

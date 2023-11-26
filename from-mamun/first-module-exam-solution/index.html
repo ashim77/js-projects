@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Sure, I'd be happy to explain the differences between these concepts:
+
+**1. Difference between JavaScript Default Function and Arrow Function:**
+
+- **Function Declaration (Default Function):**
+  ```javascript
+  function multiply(a, b) {
+    return a * b;
+  }
+  ```
+
+- **Arrow Function:**
+  ```javascript
+  const divide = (a, b) => a / b;
+  ```
+
+   **Differences:**
+
+   - **Syntax:**
+     - Default Function: Defined using the `function` keyword.
+     - Arrow Function: Defined using the `=>` syntax.
+
+   - **`this` Binding:**
+     - Default Function: Has its own `this` value, which is dynamically determined at runtime based on how the function is called.
+     - Arrow Function: Inherits `this` from the enclosing context (lexical `this` binding). It doesn't have its own `this`.
+
+   - **Return Statement:**
+     - Default Function: Requires a `return` statement to return a value.
+     - Arrow Function: If the function body consists of a single expression, it's implicitly returned without needing the `return` keyword.
+
+   - **`arguments` Object:**
+     - Default Function: Has its own `arguments` object that contains all the arguments passed to the function.
+     - Arrow Function: Does not have its own `arguments` object. It inherits the `arguments` object from the enclosing scope.
+
+   - **Use Cases:**
+     - Arrow functions are often used for short, concise functions where you want to maintain a consistent `this` value, such as in callback functions.
+
+**2. Difference between JavaScript Function and Method:**
+
+- **Function:**
+  A function in JavaScript is a standalone block of code that can be called with arguments to perform a specific task. It's not associated with any particular object.
+
+- **Method:**
+  A method in JavaScript is a function that is associated with an object. It's a property of an object and can access the object's properties and other methods using the `this` keyword.
+
+   **Differences:**
+
+   - **Ownership:**
+     - Function: Exists independently and is not bound to any object.
+     - Method: Belongs to and is associated with a specific object.
+
+   - **Invocation:**
+     - Function: Called by using its name and passing arguments.
+     - Method: Called using the object's name, followed by a dot and the method name, and passing arguments.
+
+   - **`this` Binding:**
+     - Function: `this` is dynamically determined based on how the function is called (global context, etc.).
+     - Method: `this` refers to the object that the method is called on.
+
+   - **Example:**
+     ```javascript
+     // Function
+     function greet(name) {
+       return "Hello, " + name + "!";
+     }
+
+     // Method
+     const person = {
+       firstName: "John",
+       lastName: "Doe",
+       getFullName: function() {
+         return this.firstName + " " + this.lastName;
+       }
+     };
+     ```
+
+Remember, understanding these differences will help you use these concepts effectively in your JavaScript code.
+
+</body>
+</html>

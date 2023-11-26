@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HasTech || Exam HTML Tempate</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="./assets/js/jquery.slim.min.js"></script>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <!-- navigation -->
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">HasTech</a>
+
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search"/>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+    </nav>
+
+    <!-- Modal -->
+    <div class="modal fade" id="postAddModal" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add post</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <form id="add-new-post-form">
+              <div class="form-group">
+                <label for="post-title" class="col-form-label">Title:</label>
+                <input type="text" class="form-control" id="post-title" />
+              </div>
+              <div class="form-group">
+                <label for="description-text" class="col-form-label">Description:</label>
+                <textarea class="form-control" id="description-text"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="post-thumbnail-url" class="col-form-label">Thumbnail URL:</label>
+                <input type="text" class="form-control" id="post-thumbnail-url"/>
+              </div>
+              <div class="form-group mb-3">
+                <div class="tag-selector">
+                  <input type="checkbox" name="tags[]" id="news" value="news" />
+                  <label for="news"> News</label><br />
+                  <input type="checkbox" id="post" name="tags[]" value="post" />
+                  <label for="post"> post</label><br />
+                  <input type="checkbox" id="fashion" name="tags[]" value="fashion"/>
+                  <label for="fashion"> fashion</label><br /><br />
+                </div>
+              </div>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Add Post</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="blog-top-area">
+
+              <!-- Tags -->
+              <div class="tag-filter-button" id="post-tag-item">
+                <!-- Tag Item List -->
+                <!-- Tag Item List -->
+                <!-- <button type="button" class="btn btn-primary">News</button>
+                <button type="button" class="btn btn-secondary">Blog</button>
+                <button type="button" class="btn btn-secondary">Post</button>
+                <button type="button" class="btn btn-secondary">Internation</button> -->
+              </div>
+
+              <div class="add-new">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#postAddModal">
+                  + Add New Post
+                </button>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="row" id="postList">
+
+          <!--Blog Item Start-->
+          
+          <!--Blog Item End-->
+          
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="pagination">
+              <ul>
+                <li><a class="page-numbers prev" href="#">Prev</a></li>
+                <li><span class="page-numbers current">1</span></li>
+                <li><a class="page-numbers" href="#">2</a></li>
+                <li><a class="page-numbers" href="#">3</a></li>
+                <li><a class="page-numbers" href="#">4</a></li>
+                <li><a class="page-numbers next" href="#">Next</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>JS HTML DOM</title>
+
+      <style>
+            #container {
+                  width: 400px;
+                  height: 400px;
+                  position: relative;
+                  background: yellow;
+            }
+            #animate {
+                  width: 50px;
+                  height: 50px;
+                  position: absolute;
+                  background: red;
+            }
+      </style>
+</head>
+<body>
+      <!-- 1- DOM Methods  -->
+      <p id="demo"></p>
+      <script>
+      document.getElementById("demo").innerHTML = "Hello World!";
+      </script>
+
+      <!-- 2- DOM Document -->
+
+      <!-- 3- DOM Elements -->
+      <!-- Finding HTML Elements by Id -->
+      <p id="intro">Finding HTML Elements by Id</p>
+      <p>This example demonstrates the <b>getElementsById</b> method.</p>
+      <p id="demo1"></p>
+
+      <script>
+      const element = document.getElementById("intro");
+      document.getElementById("demo1").innerHTML = "The text from the intro paragraph is: " + element.innerHTML;
+      </script>
+
+      <!-- Finding HTML Elements by Tag Name. -->
+      <p>Finding HTML Elements by Tag Name.</p>
+      <p>This example demonstrates the <b>getElementsByTagName</b> method.</p>
+      <p id="demo"></p>
+
+      <script>
+      const element = document.getElementsByTagName("p");
+      document.getElementById("demo").innerHTML = 'The text in first paragraph (index 0) is: ' + element[0].innerHTML;
+      </script>
+
+      <!-- Finding HTML Elements by Class Name. -->
+      <p>Finding HTML Elements by Class Name.</p>
+      <p class="intro">Hello World!</p>
+      <p class="intro">This example demonstrates the <b>getElementsByClassName</b> method.</p>
+      <p id="demo"></p>
+
+      <script>
+      const x = document.getElementsByClassName("intro");
+      document.getElementById("demo").innerHTML = 
+      'The first paragraph (index 0) with class="intro" is: ' + x[0].innerHTML;
+      </script>
+
+      <!-- Finding HTML Elements by Query Selector -->
+      <p>Finding HTML Elements by Query Selector</p>
+      <p class="intro">Hello World!.</p>
+      <p class="intro">This example demonstrates the <b>querySelectorAll</b> method.</p>
+      <p id="demo"></p>
+
+      <script>
+      const x = document.querySelectorAll("p.intro");
+      document.getElementById("demo").innerHTML = 
+      'The first paragraph (index 0) with class="intro" is: ' + x[0].innerHTML;
+      </script>
+
+      <!-- 4- HTML DOM -->
+      <!-- Changing HTML Content -->
+      <p id="p1">Hello World!</p>
+      <script>
+      document.getElementById("p1").innerHTML = "New text!";
+      </script>
+
+      <!-- Changing the Value of an Attribute -->
+      <h2>JavaScript HTML DOM</h2>
+      <img id="image" src="smiley.gif" width="160" height="120">
+
+      <script>
+      document.getElementById("image").src = "landscape.jpg";
+      </script>
+
+      <!-- Dynamic HTML content -->
+      <p id="demo"></p>
+
+      <script>
+      document.getElementById("demo").innerHTML = "Date : " + Date();
+      </script>
+
+      <!-- document.write() -->
+      <p>Bla, bla, bla</p>
+
+      <script>
+      document.write(Date());
+      </script>
+
+      <!-- 5- JavaScript Forms -->
+      <h2>JavaScript Validation</h2>
+      <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+            Name: <input type="text" name="fname">
+            <input type="submit" value="Submit">
+      </form>
+      <script>
+            function validateForm() {
+                  let x = document.forms["myForm"]["fname"].value;
+                  if (x == "") {
+                  alert("Name must be filled out");
+                  return false;
+                  }
+            }
+      </script>
+
+      <!-- JavaScript number Validation -->
+      <input id="numb">
+      <button type="button" onclick="myFunction()">Submit</button>
+      <p id="demo"></p>
+
+      <script>
+      function myFunction() {
+            // Get the value of the input field with id="numb"
+            let x = document.getElementById("numb").value;
+            // If x is Not a Number or less than one or greater than 10
+            let text;
+            if (isNaN(x) || x < 1 || x > 10) {
+            text = "Input not valid";
+            } else {
+            text = "Input OK";
+            }
+            document.getElementById("demo").innerHTML = text;
+      }
+      </script>
+
+      <!-- Automatic HTML Form Validation -->
+      <h2>JavaScript Validation</h2>
+
+      <form action="/action_page.php" method="post">
+            <input type="text" name="fname" required>
+            <input type="submit" value="Submit">
+      </form>
+
+      <!-- 6- Changing CSS -->
+      <p id="p2">Hello World!</p>
+
+      <script>
+      document.getElementById("p2").style.color = "blue";
+      </script>
+
+      <!-- Using Events -->
+      <p id="p2">Hello World!</p>
+
+      <script>
+      document.getElementById("p2").style.color = "blue";
+      </script>
+
+      <!-- 7- DOM Animation -->
+      <h1>My First JavaScript Animation</h1>
+      <div id="animation">My animation will go here</div>
+
+      <!-- Creating animation  -->
+      <h2>My First JavaScript Animation</h2>
+      <div id="container">
+            <div id="animate"></div>
+      </div>
+
+      <!-- 8- DOM Events -->
+      <h1 onclick="changeText(this)">Click on this text!</h1>
+
+      <script>
+      function changeText(id) {
+            id.innerHTML = "Ooops!";
+      }
+      </script>
+
+      <!-- 9- DOM EventListener -->
+      <button id="myBtn">Try it</button>
+
+      <p id="demo"></p>
+
+      <script>
+      document.getElementById("myBtn").addEventListener("click", displayDate);
+
+      function displayDate() {
+      document.getElementById("demo").innerHTML = Date();
+      }
+      </script>
+
+      <!-- Add an Event Handler to an Element -->
+      <button id="myBtn">Try it</button>
+
+      <script>
+      document.getElementById("myBtn").addEventListener("click", myFunction);
+
+      function myFunction() {
+      alert ("Hello World!");
+      }
+      </script>
+
+      <!-- 10- HTML DOM Navigation -->
+      <h1 id="id01">My First Page</h1>
+      <p id="id02"></p>
+
+      <script>
+      document.getElementById("id02").innerHTML = document.getElementById("id01").firstChild.nodeValue;
+      </script>
+
+      <!-- DOM Root Nodes -->
+      <p id="demo"></p>
+
+      <script>
+      document.getElementById("demo").innerHTML = document.body.innerHTML;
+      </script>
+
+
+
+      <script src="script.js"></script>
+</body>
+</html>

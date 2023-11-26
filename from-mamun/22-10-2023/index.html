@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+</head>
+<body>
+      <select name="" id="myselect" onchange="changeMySelect(this.value)">
+            <option value="">Choose an option:</option>
+            <option value="customers">Customers</option>
+            <option value="products">Products</option>
+            <option value="suppliers">Suppliers</option>
+      </select>
+
+      <p id="demo"></p>
+      
+
+      <script src="script.js"></script>
+
+      <script>
+            async function changeMySelect(sel){
+                  let x = "";
+                  const dbParam = JSON.stringify({table:sel, limit: 20});
+                  const response = await fetch("https://www.w3schools.com/js/json_demo_html_table.php", {
+                        method: 'POST',
+                        headers:{
+                              'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: "x=" + dbParam,
+                  });
+
+                  const myObj = await response.json();
+                  text = "<table border='1'>"
+                  for (x in myObj) {
+                        text += "<tr><td>" + myObj[x].name + "</td></tr>";
+                  }
+                  text += "</table>"    
+                  document.getElementById("demo").innerHTML = text;
+
+            }
+      </script>
+</body>
+</html>
