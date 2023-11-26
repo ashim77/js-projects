@@ -4,6 +4,17 @@
 
     const input = "We are learning JavaScript";
 
-    const capitalizeWords = input => input.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
+    function firstWordCap(input){
+        let words = input.split(" ");
+        
+        const capitalizeWords = words.map((word) =>{
+            if(word.length > 0){
+                return word.charAt(0).toUpperCase() + word.slice(1);
+            }else{
+                return word;
+            }
+        })
+        return capitalizeWords.join(" ");
+    }
 
-    console.log(capitalizeWords(input));
+    console.log(firstWordCap(input));

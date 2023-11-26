@@ -1,8 +1,14 @@
-//2. Write a JavaScript function that takes a string as input and returns the string reversed. Input: "The quick brown fox" Output: "brown fox quick The"
+//2. Write a JavaScript function that takes a string as input and returns the string reversed. 
+// Input: "The quick brown fox" Output: "brown fox quick The"
 
 
-const str2 = 'The quick brown fox sdfs wewe X B';
+const strInput = 'The quick brown fox';
+// console.log(strInput);
+function reverseString(input){
+    return input.split(" ").reverse().join(" ");
+}
+console.log(reverseString(strInput));
 
-const reversedString = str2.split(' ').sort((a, b) => a.toLowerCase() > b.toLowerCase() ? 1 : -1).join(' ');
+// const reversedString = str2.split(' ').sort((a, b) => a.toLowerCase() > b.toLowerCase() ? 1 : -1).join(' ');
 
-console.log(reversedString);
+// console.log(reversedString);
