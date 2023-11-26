@@ -1,0 +1,240 @@
+.img,
+img {
+  max-width: 100%;
+  height: auto;
+}
+.blog-top-area {
+  margin-bottom: 40px;
+  padding: 20px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+.blog-area a,
+.blog-details-area a {
+  text-decoration: none;
+}
+.blog-area {
+  background-color: #f6f6f6;
+  padding: 80px 0;
+}
+.blog-item {
+  background-color: #fff;
+  margin-bottom: 50px;
+}
+.blog-item-info {
+  padding: 30px;
+}
+ul.blog-tags-list {
+  display: inline-block;
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+}
+.blog-tags-list li {
+  display: inline-block;
+  padding-right: 3px;
+}
+.blog-tags-list li a {
+  color: #777;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+.blog-tags-list li a:hover {
+  color: #000;
+}
+.blog-item-meta > span {
+  color: #777;
+  letter-spacing: 2px;
+  margin-right: 12px;
+  text-transform: capitalize;
+  float: right;
+}
+.blog-item-info h2 {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 34px;
+  margin: 0;
+  word-break: break-word;
+}
+.blog-item-info h2 a {
+  color: #000;
+}
+.blog-item-info h2 a:hover,
+.blog-item-description a.readmore_btn:hover,
+.related-item-info h3 a:hover {
+  color: #666;
+}
+.blog-item-description {
+  display: block;
+  overflow: hidden;
+  padding: 31px 30px 23px;
+}
+.blog-item-description .description {
+  font-size: 16px;
+  line-height: 30px;
+  margin-bottom: 15px;
+  word-break: break-word;
+}
+.blog-item-description a.readmore_btn {
+  color: #444;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.pagination {
+  justify-content: center;
+}
+.pagination ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+}
+.pagination ul li {
+  display: inline-block;
+}
+.pagination ul li {
+  background-color: #fff;
+  color: #595959;
+  display: inline-block;
+  height: 35px;
+  line-height: 35px;
+  position: relative;
+  text-decoration: none;
+}
+.pagination ul li .page-numbers {
+  display: block;
+  color: #595959;
+  padding: 0 15px;
+  border: 1px solid #ddd;
+}
+.pagination ul li .page-numbers.current,
+.pagination ul li .page-numbers:hover {
+  background: #595959;
+  color: #fff;
+  border: 1px solid #595959;
+}
+
+/* Blog details */
+.blog-details-area {
+  background: #f6f6f6 none repeat scroll 0 0;
+  padding: 80px 0;
+}
+.blog-detail-area,
+.related-blog-area {
+  background: #fff none repeat scroll 0 0;
+  padding: 20px;
+}
+.blog-description {
+  margin-top: 20px;
+}
+.blog-description h2 {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 34px;
+  margin: 0;
+  word-break: break-word;
+}
+.edit-post {
+  cursor: pointer;
+  margin-left: 10px;
+}
+.blog-description .description {
+  margin-top: 12px;
+}
+.single-related-blog {
+  display: flex;
+}
+.related-item-image {
+  width: 250px;
+}
+.related-item-info {
+  padding-left: 15px;
+}
+.related-item-info h3 {
+  line-height: 1;
+  font-size: 16px;
+}
+.related-item-info h3 a {
+  color: #000;
+}
+.single-related-blog {
+  display: flex;
+}
+.single-related-blog + .single-related-blog {
+  border-top: 1px solid #ddd;
+  padding: 20px 0 10px 0;
+}
+
+/* Comment area */
+.blog-comment-area {
+  margin-top: 50px;
+}
+.blog-comment-area h2,
+.blog-comment-form h2 {
+  color: #000;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 50px;
+  margin-top: 0;
+  position: relative;
+  text-transform: uppercase;
+}
+.blog-comment-area h2::before,
+.blog-comment-form h2::before {
+  background-color: #000;
+  bottom: -15px;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  width: 120px;
+}
+.comment-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.comment-list li {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.comment-list li .author-image {
+  max-width: 150px;
+}
+.comment-list li + li {
+  border-top: 1px solid #ddd;
+}
+.comment-list li h4 {
+  color: #000;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-style: normal;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.comment-list li p {
+  color: #525252;
+  padding-right: 25px;
+  word-break: break-word;
+  margin: 0;
+}
+.delete-comment {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+}
+.delete-comment:hover {
+  color: #dc3545;
+}
+
+.blog-comment-form {
+  margin-top: 50px;
+}

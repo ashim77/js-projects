@@ -1,0 +1,40 @@
+{
+    "tags": [
+        {
+          "id": 1,
+          "title": "html"
+        },
+        {
+          "id": 2,
+          "title": "wordpress"
+        },
+        {
+          "id": 3,
+          "title": "htmega"
+        },
+        {
+          "id": 4,
+          "title": "plugin"
+        },
+        {
+          "id": 5,
+          "title": "template"
+        },
+        {
+          "id": 6,
+          "title": "website"
+        },
+        {
+          "id": 7,
+          "title": "theme"
+        },
+        {
+          "id": 8,
+          "title": "eCommerce"
+        },
+        {
+          "id": 9,
+          "title": "webflow"
+        }
+    ]    
+}

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HasTech || Exam HTML Tempate</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="./assets/js/jquery.slim.min.js"></script>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <!-- navigation -->
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">HasTech</a>
+      <form class="form-inline">
+        <input
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Search"
+          id="post-search"
+        />
+        <button class="btn btn-outline-success my-2 my-sm-0" id="search-value" type="submit">
+          Search
+        </button>
+      </form>
+    </nav>
+
+    <!-- Modal -->
+    <div class="modal fade" id="postAddModal" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add post</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="post-title" class="col-form-label">Title:</label>
+                <input type="text" class="form-control" id="post-title" />
+              </div>
+              <div class="form-group">
+                <label for="post-author" class="col-form-label">Author:</label>
+                <input type="text" class="form-control" id="post-author" />
+              </div>
+              <div class="form-group">
+                <label for="description-text" class="col-form-label"
+                  >Description:</label
+                >
+                <textarea class="form-control" id="description-text"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="post-thumbnail-url" class="col-form-label"
+                  >Thumbnail URL:</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="post-thumbnail-url"
+                />
+              </div>
+              <div class="form-group mb-3">
+                <div class="tag-selector">
+                  <input type="checkbox" name="tags[]" id="news" value="news" />
+                  <label for="news"> News</label><br />
+                  <input type="checkbox" id="post" name="tags[]" value="post" />
+                  <label for="post"> post</label><br />
+                  <input type="checkbox" id="fashion" name="tags[]" value="fashion" />
+                  <label for="fashion"> fashion</label><br /><br />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" id="add-new-post">Add Post</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="blog-top-area">
+              <!-- Tags -->
+              <div class="tag-filter-button">
+                <button type="button" class="btn btn-primary">News</button>
+                <button type="button" class="btn btn-secondary">Blog</button>
+                <button type="button" class="btn btn-secondary">Post</button>
+                <button type="button" class="btn btn-secondary">Internation</button>
+                <button type="button" class="btn btn-secondary">Internation</button>
+                <button type="button" class="btn btn-secondary">Internation</button>
+                <button type="button" class="btn btn-secondary">Internation</button>
+              </div>
+              <div class="add-new">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#postAddModal"
+                >
+                  + Add New Post
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" id="post-lists">
+          <!--Blog Item Start-->
+          <div class="col-lg-6 col-md-6">
+            <div class="blog-item">
+              <div class="blog-item-info">
+                <div class="blog-item-meta">
+                  <ul class="blog-tags-list">
+                    <li>Tags:</li>
+                    <li>
+                      <a href="#">Leather</a>
+                    </li>
+                  </ul>
+                  <span>By: HasTech</span>
+                </div>
+                <h2><a href="details.html?id=1">Sample title</a></h2>
+              </div>
+              <div class="blog-item-image">
+                <a href="details.html?id=1">
+                  <img src="./assets/images/image_1.jpg" alt="Sample Title" />
+                </a>
+              </div>
+              <div class="blog-item-description">
+                <div class="description">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi
+                </div>
+                <a class="readmore_btn" href="details.html?id=1">Read more</a>
+              </div>
+            </div>
+          </div>
+          <!--Blog Item End-->
+          <!--Blog Item Start-->
+          <div class="col-lg-6 col-md-6">
+            <div class="blog-item">
+              <div class="blog-item-info">
+                <div class="blog-item-meta">
+                  <ul class="blog-tags-list">
+                    <li>Tags:</li>
+                    <li>
+                      <a href="#">Leather</a>
+                    </li>
+                  </ul>
+                  <span>By: HasTech</span>
+                </div>
+                <h2><a href="details.html?id=2">Sample title</a></h2>
+              </div>
+              <div class="blog-item-image">
+                <a href="details.html?id=2">
+                  <img src="./assets/images/image_2.jpeg" alt="Sample Title" />
+                </a>
+              </div>
+              <div class="blog-item-description">
+                <div class="description">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi
+                </div>
+                <a class="readmore_btn" href="details.html?id=2">Read more</a>
+              </div>
+            </div>
+          </div>
+          <!--Blog Item End-->
+          <!--Blog Item Start-->
+          <div class="col-lg-6 col-md-6">
+            <div class="blog-item">
+              <div class="blog-item-info">
+                <div class="blog-item-meta">
+                  <ul class="blog-tags-list">
+                    <li>Tags:</li>
+                    <li>
+                      <a href="#">Leather</a>
+                    </li>
+                  </ul>
+                  <span>By: HasTech</span>
+                </div>
+                <h2><a href="details.html?id=3">Sample title</a></h2>
+              </div>
+              <div class="blog-item-image">
+                <a href="details.html?id=3">
+                  <img src="./assets/images/image_3.jpeg" alt="Sample Title" />
+                </a>
+              </div>
+              <div class="blog-item-description">
+                <div class="description">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi
+                </div>
+                <a class="readmore_btn" href="details.html?id=3">Read more</a>
+              </div>
+            </div>
+          </div>
+          <!--Blog Item End-->
+          <!--Blog Item Start-->
+          <div class="col-lg-6 col-md-6">
+            <div class="blog-item">
+              <div class="blog-item-info">
+                <div class="blog-item-meta">
+                  <ul class="blog-tags-list">
+                    <li>Tags:</li>
+                    <li>
+                      <a href="#">Leather</a>
+                    </li>
+                  </ul>
+                  <span>By: HasTech</span>
+                </div>
+                <h2><a href="details.html?id=4">Sample title</a></h2>
+              </div>
+              <div class="blog-item-image">
+                <a href="details.html?id=4">
+                  <img src="./assets/images/image_1.jpg" alt="Sample Title" />
+                </a>
+              </div>
+              <div class="blog-item-description">
+                <div class="description">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi
+                </div>
+                <a class="readmore_btn" href="details.html?id=4">Read more</a>
+              </div>
+            </div>
+          </div>
+          <!--Blog Item End-->
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="pagination">
+              <ul>
+                <li><a class="page-numbers prev" href="#">Prev</a></li>
+                <li><span class="page-numbers current">1</span></li>
+                <li><a class="page-numbers" href="#">2</a></li>
+                <li><a class="page-numbers" href="#">3</a></li>
+                <li><a class="page-numbers" href="#">4</a></li>
+                <li><a class="page-numbers next" href="#">Next</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
